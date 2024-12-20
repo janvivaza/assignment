@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtotal Calculation</title>
+</head>
+
+<body>
+    <div class="div">
+    <h2>Subtotal Calculator</h2>
+
+    <label for="price">Price per Item ($): </label>
+    <input type="number" id="price" placeholder="Enter price" /><br><br>
+
+    <label for="quantity">Quantity: </label>
+    <input type="number" id="quantity" placeholder="Enter quantity" /><br><br>
+
+    <button onclick="calculateSubtotal()">Calculate Subtotal</button>
+
+    <p id="subtotal">Subtotal: $0.00</p>
+</div>
+    <script>
+        function calculateSubtotal() {
+            // Get values from input fields
+            const price = parseFloat(document.getElementById("price").value);
+            const quantity = parseInt(document.getElementById("quantity").value);
+
+            // Validate input values
+            if (isNaN(price) || isNaN(quantity) || price < 0 || quantity < 0) {
+                document.getElementById("subtotal").innerText = "Please enter valid price and quantity.";
+                return;
+            }
+
+            // Calculate subtotal
+            const subtotal = price * quantity;
+
+            // Display the result
+            document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
